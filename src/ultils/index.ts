@@ -1,3 +1,4 @@
+export { parseRecommendedData } from "./parseRecommendedData";
 export { timeSince } from "./timeSince";
 export { convertRawViewstoString } from "./convertRawViewsToString";
 export { parseVideoDuration } from "./parseVideoDuration";

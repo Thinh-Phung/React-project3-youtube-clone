@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
@@ -20,6 +19,8 @@ export default function Home() {
   useEffect(() => {
     dispatch(getHomePageVideos(false));
   }, [dispatch]);
+
+  console.log(videos);
   return (
     <div className="max-h-screen overflow-hidden">
       <div style={{ height: "7.5vh" }}>
@@ -27,7 +28,7 @@ export default function Home() {
       </div>
       <div className="flex" style={{ height: "92.5vh" }}>
         <Sidebar />
-        {undefined ? (
+        {videos.length ? (
           <InfiniteScroll
             dataLength={videos.length}
             next={() => dispatch(getHomePageVideos(true))}

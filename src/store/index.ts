@@ -1,3 +1,5 @@
+import { getRecommendedVideos } from "./reducers/getRecommendedVideos";
+import { getVideoDetails } from "./reducers/getVideoDetails";
 import { getSearchPageVideos } from "./reducers/getSearchPageVideos";
 import { InitialState } from "./../Types";
 import { getHomePageVideos } from "./reducers/getHomePageVideos";
@@ -34,6 +36,12 @@ const YoutubeSlice = createSlice({
     builder.addCase(getSearchPageVideos.fulfilled, (state, action) => {
       state.videos = action.payload.parsedData;
       state.nextPageToken = action.payload.nextPageToken;
+    });
+    builder.addCase(getVideoDetails.fulfilled, (state, action) => {
+      state.currentPlaying = action.payload;
+    });
+    builder.addCase(getRecommendedVideos.fulfilled, (state, action) => {
+      state.recommendedVideos = action.payload.parsedData;
     });
   },
 });
